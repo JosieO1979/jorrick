@@ -1,12 +1,9 @@
-# Load necessary libraries
+
 library(shiny)
 library(dplyr)
 
-# Load the dataset
-# Replace 'path_to_your_file' with the actual path to your dataset
 data <- KansasCrimeLongedit
 
-# Define UI for the application
 ui <- fluidPage(
   titlePanel("Kansas County Crime Rates"),
   sidebarLayout(
@@ -20,7 +17,6 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic
 server <- function(input, output) {
   output$crimeRateOutput <- renderText({
     filtered_data <- filter(data, County == input$county, Year == input$year)
@@ -29,6 +25,5 @@ server <- function(input, output) {
   })
 }
 
-# Run the application
 shinyApp(ui = ui, server = server)
 
